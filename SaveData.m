@@ -79,6 +79,7 @@ evalin( 'base', ['save ' folder '/' file '_data.mat'] );
 %end
 %fclose( fid3 );
 
+% Tq_eREF
 
 fid3 = fopen([folder '/' file '_Tq_eREFdata.txt'], 'w');
 
@@ -88,11 +89,20 @@ end
 
 fclose(fid3);
 
+% outputSig
 
 fid4 = fopen([folder '/' file '_outputdata.txt'], 'w');
 
+numColumns = size(outputSig.Data, 2);
 for ii = 1:size(outputSig.Time, 1)
-    fprintf(fid4, '%f\n', outputSig.Data(ii,:));
+    for jj = 1:numColumns
+        fprintf(fid4, '%f', outputSig.Data(ii,jj));
+        if mod(jj, 9) == 0
+            fprintf(fid4, '\n');
+        else
+            fprintf(fid4, '\t');
+        end
+    end
 end
 
 fclose(fid4);
@@ -101,13 +111,21 @@ fclose(fid4);
 
 
 fid5 = fopen([folder '/' file '_statedata.txt'], 'w');
-
+numColumns = size(statesSig.Data, 2);
 for ii = 1:size(statesSig.Time, 1)
-    fprintf(fid5, '%f\n', statesSig.Data(ii,:));
+    for jj = 1:numColumns
+        fprintf(fid5, '%f', statesSig.Data(ii,jj));
+        if mod(jj, 13) == 0
+            fprintf(fid5, '\n');
+        else
+            fprintf(fid5, '\t');
+        end
+    end
 end
 
 fclose(fid5);
 
+% omega_eREF
 
 fid6 = fopen([folder '/' file '_omega_eREFdata.txt'], 'w');
 
@@ -116,3 +134,21 @@ for ii = 1:size(omega_eREF.Time, 1)
 end
 
 fclose(fid6);
+
+% inputSig
+
+fid7 = fopen([folder '/' file '_inputdata.txt'], 'w');
+
+numColumns = size(inputSig.Data, 2);
+for ii = 1:size(inputSig.Time, 1)
+    for jj = 1:numColumns
+        fprintf(fid7, '%f', inputSig.Data(ii,jj));
+        if mod(jj, 5) == 0 % Jump to a new line after every 5 columns
+            fprintf(fid7, '\n');
+        else
+            fprintf(fid7, '\t');
+        end
+    end
+end
+
+fclose(fid7);
