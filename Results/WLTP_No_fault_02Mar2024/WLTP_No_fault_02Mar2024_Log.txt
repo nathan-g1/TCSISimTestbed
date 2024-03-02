@@ -1,0 +1,19 @@
+------------------------------------------------
+Simulation for No_fault Scenario                
+------------------------------------------------
+                                                
+Driving Cycle: WLTP (1800 seconds)              
+                                                
+------------------------------------------------
+                                                
+Generating reference signals......... [ DONE ]  
+Loading engine system................ [ DONE ]  
+Simulating engine system............. [ DONE ]  
+                                                
+------------------------------------------------
+                                                
+Saving data and plots................ [ DONE ]  
+End of sequence.                                
+Total simulation time: 31.3 seconds.            
+                                                
+------------------------------------------------
